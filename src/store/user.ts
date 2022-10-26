@@ -9,6 +9,21 @@ export const useUserStore = defineStore({
             loginTime: '',
         }
     },
+    // getters JSON.parse(sessionStorage.getItem('user'))部分需要完善
+    // getters: {
+    //     getUser():{ username: string; password: string;loginTime: string;}{
+    //         if(!this.username){
+    //             const user = JSON.parse(sessionStorage.getItem('user'))
+    //             this.username = user.username
+    //             this.loginTime = user.loginTime
+    //         }
+    //         return {
+    //             username: this.username,
+    //             password: this.password,
+    //             loginTime: this.loginTime
+    //         }
+    //     }
+    // },
     actions:{
         setUser(data: { username: string; password: string; loginTime: string; }){
             this.username = data.username;

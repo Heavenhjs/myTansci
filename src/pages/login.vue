@@ -12,37 +12,19 @@
           <el-form ref="ruleFormRef" :model="state.loginForm" :rules="rules">
             <div class="login-form-title">欢迎登录</div>
             <el-form-item label="账号" prop="username">
-              <el-input
-                v-model="state.loginForm.username"
-                prefix-icon="Avatar"
-                placeholder="请输入用户账号"
-                style="width: 100%"
-              />
+              <el-input v-model="state.loginForm.username" prefix-icon="Avatar" placeholder="请输入用户账号"
+                style="width: 100%" />
             </el-form-item>
             <el-form-item label="密码" prop="password">
-              <el-input
-                v-model="state.loginForm.password"
-                prefix-icon="Lock"
-                placeholder="请输入用户密码"
-                type="password"
-                style="width: 100%"
-              />
+              <el-input v-model="state.loginForm.password" prefix-icon="Lock" placeholder="请输入用户密码" type="password"
+                style="width: 100%" />
             </el-form-item>
             <!-- 这里需要再做一个滑动块验证 -->
             <el-form-item>
-              <el-checkbox
-                v-model="state.loginForm.keepPassword"
-                label="记住密码"
-              />
+              <el-checkbox v-model="state.loginForm.keepPassword" label="记住密码" />
             </el-form-item>
             <el-form-item>
-              <el-button
-                type="primary"
-                round
-                style="width: 100%"
-                @click="submit(ruleFormRef)"
-                >登录</el-button
-              >
+              <el-button type="primary" round style="width: 100%" @click="submit(ruleFormRef)">登录</el-button>
             </el-form-item>
           </el-form>
           <button @click="tiaoshi">调试</button>
@@ -57,7 +39,7 @@ import type { FormInstance, FormRules } from "element-plus";
 import { ref, reactive } from "vue";
 import { useUserStore } from "../store/user";
 import { login } from "../api/systemApi";
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 
 // 使用的pinia
 const userStore = useUserStore();
@@ -115,7 +97,7 @@ const submit = async (formEl: FormInstance | undefined) => {
           if (res) {
             // 存储用户信息
             console.log(res);
-            // 这里暂时需要调用mock的数据返回
+            // 这里暂时需调用mock的数据返回
             userStore.setUser(res.result);
             // 存储token
             // tokenStore.setToken(res.result.token);
@@ -142,4 +124,6 @@ const tiaoshi = () => {
 };
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+
+</style>
