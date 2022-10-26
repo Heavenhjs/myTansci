@@ -1,20 +1,26 @@
 import { defineStore } from "pinia";
 
-export const userUserStore = defineStore({
+export const useUserStore = defineStore({
     id:'user', //id唯一且必须
     state:()=>{
         return {
-            name:'张三',
-            age: 16
+            username:'',
+            password:'',
+            loginTime: '',
         }
     },
     actions:{
-        updateName(name: string){
-            this.name = name;
-            console.log(this.name);
+        setUser(data: { username: string; password: string; loginTime: string; }){
+            this.username = data.username;
+            this.password = data.password;
+            this.loginTime = data.loginTime;
         },
-        updateAge(age: number){
-            this.age = age;
+        updateName(name: string){
+            this.username = name;
+            console.log(this.username);
+        },
+        updatePassword(password: string){
+            this.password = password;
         }
     }
 })
