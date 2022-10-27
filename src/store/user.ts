@@ -25,10 +25,9 @@ export const useUserStore = defineStore({
     //     }
     // },
     actions:{
-        setUser(data: { username: string; password: string; loginTime: string; }){
+        setUser(data: { username: string; password: string;}){
             this.username = data.username;
             this.password = data.password;
-            this.loginTime = data.loginTime;
         },
         updateName(name: string){
             this.username = name;

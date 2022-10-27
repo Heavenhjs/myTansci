@@ -25,14 +25,17 @@ export default defineConfig({
     }),
   ],
   server: {
+    //服务器主机名
     port: 5174,
+    open: true,
     hmr: {
       host: "127.0.0.1",
       port: 5174,
     },
+    // 代理跨域（mock 不需要配置跨域，直接能访问）
     proxy: {
       "/api": {
-        target: "127.0.0.1",
+        target: "https://www.fastmock.site/mock/661e5fcc775d88185f2191085b5384c4",
         changeOrigin: true,
         rewrite: (path: string) => path.replace(/^\/api/, ""),
       },
