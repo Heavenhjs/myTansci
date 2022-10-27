@@ -35,8 +35,10 @@ export default defineConfig({
     // 代理跨域（mock 不需要配置跨域，直接能访问）
     proxy: {
       "/api": {
+        // 目标地址
         target: "https://www.fastmock.site/mock/661e5fcc775d88185f2191085b5384c4",
         changeOrigin: true,
+        // 将/api去掉
         rewrite: (path: string) => path.replace(/^\/api/, ""),
       },
     },

@@ -30,7 +30,6 @@ declare module "axios" {
     // 向后台发送post请求
     // Springboot版本
     // return axios.post('/tansci/user/login', params);
-    // Mock版本 待补充
-    console.log('/mytansci/user/login');
+    // Mock版本 需要加上/api（由于vite.config.ts配置）再调用接口
     return axios.post('/api/mytansci/user/login', params);
 }
