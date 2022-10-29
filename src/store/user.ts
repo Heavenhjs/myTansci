@@ -6,7 +6,7 @@ export const useUserStore = defineStore({
         return {
             username:'',
             password:'',
-            loginTime: '',
+            logintime: '',
         }
     },
     // getters JSON.parse(sessionStorage.getItem('user'))部分需要完善
@@ -25,13 +25,14 @@ export const useUserStore = defineStore({
     //     }
     // },
     actions:{
-        setUser(data: { username: string; password: string;}){
+        setUser(data: { username: string; password: string; logintime: string}){
             this.username = data.username;
             this.password = data.password;
+            this.logintime = data.logintime;
         },
         updateName(name: string){
             this.username = name;
-            console.log(this.username);
+            // console.log(this.username);
         },
         updatePassword(password: string){
             this.password = password;

@@ -14,7 +14,7 @@ class param {
 class result {
     username!: string;
     password!: string;
-    loginTime: string | undefined;
+    logintime!: string;
 }
 
 // 处理  类型“AxiosResponse<any, any>”上不存在属性“errorinfo”。ts(2339) 脑壳疼！关键一步。
