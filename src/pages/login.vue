@@ -141,7 +141,7 @@ const submit = async (formEl: FormInstance | undefined) => {
           state.loginForm.password = "";
           state.loginForm.keepPassword = null;
           // 滑动条归零
-          // slidingVerify.value.onRefresh();
+          // slidingVerify.value.onRefresh(;
         });
     }
     // 表单数据不符合则显示error
