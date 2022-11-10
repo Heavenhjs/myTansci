@@ -117,13 +117,13 @@ onMounted(() => {
   state.menus = [
     {key:"0",title:"工作台",path:"/console",icon:"House"},
     {key:"1",title:"系统管理",icon:"SetUp",children:
-    [{key:"1-1",title:"用户列表",path:"/userList",icon:"Notification"},
-    {key:"1-2",title:"菜单管理",path:"/menuMan",icon:"Operation"},
-    {key:"1-3",title:"角色管理",path:"/userMan",icon:"UserFilled"},
+    [{key:"1-1",title:"用户列表",path:"/userlist",icon:"Notification"},
+    {key:"1-2",title:"菜单管理",path:"/menuman",icon:"Operation"},
+    {key:"1-3",title:"角色管理",path:"/userman",icon:"UserFilled"},
     ]},
-    {key:"3",title:"消息管理",path:"/infoMan",icon:"ChatLineSquare"},
-    {key:"4",title:"任务管理",path:"/taskMan",icon:"PieChart"},
-    {key:"5",title:"API文档",path:"/APIdoc",icon:"Tickets"},];
+    {key:"3",title:"消息管理",path:"/infoman",icon:"ChatLineSquare"},
+    {key:"4",title:"任务管理",path:"/taskman",icon:"PieChart"},
+    {key:"5",title:"系统文档",path:"/sysydoc",icon:"Tickets"},];
 });
 
 // onNestedLink在点击菜单后触发

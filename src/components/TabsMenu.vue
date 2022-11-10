@@ -61,11 +61,9 @@ const emit = defineEmits<{
 const onTabMenuClick = (tabItem:TabsPaneContext) =>{
     let path:string = tabItem.props.name as string;
     emit('onTabsLink',path);
-    // console.log("标签页发送刷新");
-    // console.log(path);
 };
 
-// 这里还有些许bug 删除时要判断当前state.tabsMenuValue的变化
+// 删除时要判断当前state.tabsMenuValue的变化
 const onTabMenuRemove = (tabItem:string) =>{
   let key:number;
   for(key = 0; key < state.tabsMenuList.length; key++){
@@ -73,12 +71,13 @@ const onTabMenuRemove = (tabItem:string) =>{
       break;
     }
   }
-  // 当前state.tabsMenuValue前移一位
+  // 如果删除的刚好是当前tabsMenuValue，那么state.tabsMenuValue后移一位，如果后面没有了，则转到首页
   if(state.tabsMenuValue == state.tabsMenuList[key].path){
     if(key != state.tabsMenuList.length - 1)
       state.tabsMenuValue = state.tabsMenuList[key + 1].path;
     else
       state.tabsMenuValue = state.tabsMenuList[0].path;
+    emit('onTabsLink',state.tabsMenuValue);
   }
 
   // 删除tabsMenuList中的某个元素 做法是将该元素后的元素依次前挪，最后一个元素pop掉
