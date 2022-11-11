@@ -52,7 +52,7 @@
         </div>
       </el-header>
       <!-- 主页面 -->
-      <el-main>
+      <el-main :style="{height: '800px'}">
         <router-view
           v-show="state.iframe.isIframe"
           style="margin: 0.4rem;"
@@ -61,6 +61,7 @@
           v-show="state.iframe.isIframe"
           :src="state.iframe.src"
           width="100%"
+          height="100%"
           frameborder="0"
         />
       </el-main>
@@ -150,4 +151,5 @@ const onCollapse =() =>{
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less">
+</style>

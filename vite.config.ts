@@ -42,6 +42,18 @@ export default defineConfig({
         // 将/api去掉
         rewrite: (path: string) => path.replace(/^\/api/, ""),
       },
+      "/findIp": {
+        target: "http://pv.sohu.com/cityjson?ie=utf-8",
+        changeOrigin: true,
+        // 将/findIp截取掉
+        rewrite: (path: string) => path.replace(/^\/findIp/, ""),
+      },
+      "/getWeather": {
+        target: "https://api.map.baidu.com",
+        changeOrigin: true,
+        // 将/getWeather去掉
+        rewrite: (path: string) => path.replace(/^\/getWeather/, ""),
+      },
     },
   },
 });

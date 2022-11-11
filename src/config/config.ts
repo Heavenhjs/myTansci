@@ -5,3 +5,5 @@ export const HOME_URL = "/home";
 
 // Tabs（黑名单地址，不需要添加到 tabs 的路由地址）
 export const TABS_BLACK_LIST = ["/404", "/500", "/login"];
+
+export const getWeatherApi = "/weather/v1/?data_type=all&ak=LxOIKweMkhINgdn0V04mMX5OjEDHbeST&";

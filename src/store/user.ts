@@ -13,14 +13,14 @@ export const useUserStore = defineStore({
     // getters: {
     //     getUser():{ username: string; password: string;loginTime: string;}{
     //         if(!this.username){
-    //             const user = JSON.parse(sessionStorage.getItem('user'))
-    //             this.username = user.username
-    //             this.loginTime = user.loginTime
+    //             const user = JSON.parse(sessionStorage.getItem('user'));
+    //             this.username = user.username;
+    //             this.logintime = user.loginTime;
     //         }
     //         return {
     //             username: this.username,
     //             password: this.password,
-    //             loginTime: this.loginTime
+    //             loginTime: this.logintime
     //         }
     //     }
     // },
@@ -29,6 +29,10 @@ export const useUserStore = defineStore({
             this.username = data.username;
             this.password = data.password;
             this.logintime = data.logintime;
+            sessionStorage.setItem('user', JSON.stringify({
+                username: data.username,
+                loginTime: data.logintime
+            }))
         },
         updateName(name: string){
             this.username = name;

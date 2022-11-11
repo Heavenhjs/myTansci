@@ -7,7 +7,7 @@ export default [
       keepAlive: true,
       requireAuth: false,
     },
-    component: () => import("@/pages/login.vue"),
+    component: () => import("@/pages/Login.vue"),
   },
   {
     path: "/",

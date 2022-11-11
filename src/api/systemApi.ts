@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
-import axios from '../utils/axios'
+import axios from '../utils/axios';
+import {getWeatherApi} from '../config/config';
 // ==================登录=============================
 /**
  * 登录
@@ -17,9 +18,9 @@ class result {
     logintime!: string;
 }
 
-// 处理  类型“AxiosResponse<any, any>”上不存在属性“errorinfo”。ts(2339) 脑壳疼！关键一步。
+// 处理  
 declare module "axios" {
-    interface AxiosResponse<T = any> {
+    interface AxiosResponse {
       errorinfo: null;
       result: result;
     }
@@ -32,4 +33,11 @@ declare module "axios" {
     // return axios.post('/tansci/user/login', params);
     // Mock版本 需要加上/api（由于vite.config.ts配置）再调用接口
     return axios.post('/api/mytansci/user/login', params);
+}
+
+export function findIp():Promise<AxiosResponse<any, any>> {
+    return axios.get('/findIp');
+}
+export function getWeather(district_id: string):Promise<AxiosResponse<any, any>> {
+    return axios.get('/getWeather'+getWeatherApi+"district_id="+district_id);
 }

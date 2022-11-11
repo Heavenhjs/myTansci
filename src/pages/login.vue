@@ -5,13 +5,25 @@
       <div class="login-main">
         <!-- 登录左侧的图标 -->
         <div class="login-logo">
-          <el-image :src="loginLogo" style="width: 100%; height: 100%" />
+          <el-image
+            :src="loginLogo"
+            style="width: 100%; height: 100%"
+          />
         </div>
         <!-- 主登录表单 -->
         <div class="login-form">
-          <el-form ref="ruleFormRef" :model="state.loginForm" :rules="rules">
-            <div class="login-form-title">欢迎登录</div>
-            <el-form-item label="账号" prop="username">
+          <el-form
+            ref="ruleFormRef"
+            :model="state.loginForm"
+            :rules="rules"
+          >
+            <div class="login-form-title">
+              欢迎登录
+            </div>
+            <el-form-item
+              label="账号"
+              prop="username"
+            >
               <el-input
                 v-model="state.loginForm.username"
                 prefix-icon="Avatar"
@@ -19,7 +31,10 @@
                 style="width: 100%"
               />
             </el-form-item>
-            <el-form-item label="密码" prop="password">
+            <el-form-item
+              label="密码"
+              prop="password"
+            >
               <el-input
                 v-model="state.loginForm.password"
                 prefix-icon="Lock"
@@ -41,11 +56,17 @@
                 round
                 style="width: 100%"
                 @click="submit(ruleFormRef)"
-                >登录</el-button
               >
+                登录
+              </el-button>
             </el-form-item>
           </el-form>
-          <el-button :plain="true" @click="tiaoshi">调试</el-button>
+          <el-button
+            :plain="true"
+            @click="tiaoshi"
+          >
+            调试
+          </el-button>
         </div>
       </div>
     </el-card>
