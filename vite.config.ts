@@ -5,7 +5,8 @@ import * as path from "path";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-
+// TSX配置
+import vueJsx from "@vitejs/plugin-vue-jsx"
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -17,6 +18,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    vueJsx(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
     }),

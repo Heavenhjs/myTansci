@@ -17,7 +17,7 @@ export default [
       keepAlive: true,
       requireAuth: false,
     },
-    component: () => import("@/pages/system/console.vue"),
+    component: () => import("@/pages/menu/console.vue"),
   },
   {
     path: "/infoman",
@@ -27,7 +27,7 @@ export default [
       keepAlive: true,
       requireAuth: false,
     },
-    component: () => import("@/pages/system/infoMan.vue"),
+    component: () => import("@/pages/menu/infoMan.vue"),
   },
   {
     path: "/userlist",
@@ -37,7 +37,7 @@ export default [
       keepAlive: true,
       requireAuth: false,
     },
-    component: () => import("@/pages/system/userList.vue"),
+    component: () => import("@/pages/menu/system/userList.vue"),
   },
   {
     path: "/menuman",
@@ -47,7 +47,7 @@ export default [
       keepAlive: true,
       requireAuth: false,
     },
-    component: () => import("@/pages/system/menuMan.vue"),
+    component: () => import("@/pages/menu/system/menuMan.vue"),
   },
   {
     path: "/userman",
@@ -57,17 +57,17 @@ export default [
       keepAlive: true,
       requireAuth: false,
     },
-    component: () => import("@/pages/system/userMan.vue"),
+    component: () => import("@/pages/menu/system/userMan.vue"),
   },
   {
     path: "/taskman",
     name: "taskMan",
     meta: {
-      title: "角色管理",
+      title: "任务管理",
       keepAlive: true,
       requireAuth: false,
     },
-    component: () => import("@/pages/system/taskMan.vue"),
+    component: () => import("@/pages/menu/taskMan.vue"),
   },
   {
     path: "/sysydoc",
@@ -77,6 +77,6 @@ export default [
       keepAlive: true,
       requireAuth: false,
     },
-    component: () => import("@/pages/system/sysDoc.vue"),
+    component: () => import("@/pages/menu/sysDoc.vue"),
   },
 ];
