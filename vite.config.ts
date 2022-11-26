@@ -5,7 +5,8 @@ import * as path from "path";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-
+// TSX配置
+import vueJsx from "@vitejs/plugin-vue-jsx"
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -17,6 +18,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    vueJsx(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
     }),
@@ -35,11 +37,24 @@ export default defineConfig({
     // 代理跨域（mock 不需要配置跨域，直接能访问）
     proxy: {
       "/api": {
-        // 目标地址
-        target: "https://www.fastmock.site/mock/661e5fcc775d88185f2191085b5384c4",
+        // 目标地址(easymock:https://mock.mengxuegu.com/mock/6359dad78c51366598ff4b1c)
+        // 备用地址(fastmock:https://www.fastmock.site/mock/661e5fcc775d88185f2191085b5384c4)
+        target: "https://mock.mengxuegu.com/mock/6359dad78c51366598ff4b1c",
         changeOrigin: true,
         // 将/api去掉
         rewrite: (path: string) => path.replace(/^\/api/, ""),
+      },
+      "/findIp": {
+        target: "http://pv.sohu.com/cityjson?ie=utf-8",
+        changeOrigin: true,
+        // 将/findIp截取掉
+        rewrite: (path: string) => path.replace(/^\/findIp/, ""),
+      },
+      "/getWeather": {
+        target: "https://api.map.baidu.com",
+        changeOrigin: true,
+        // 将/getWeather去掉
+        rewrite: (path: string) => path.replace(/^\/getWeather/, ""),
       },
     },
   },

@@ -4,4 +4,5 @@
 
 ​ body {
     background-color: var(--main-bg-color);
+    height: 800px;
 }
