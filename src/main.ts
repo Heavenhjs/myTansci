@@ -5,7 +5,9 @@ import store from "./store";
 import router from "./router";
 import * as ELementPluseIconsVue from '@element-plus/icons-vue';
 import 'element-plus/theme-chalk/el-message.css';
-
+// 解决element-plus自动引入后ElLoading、ElMessage、ElNotification、ElMessageBox样式丢失的问题
+import "element-plus/dist/index.css";
+// 配置多语言
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 

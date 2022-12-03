@@ -21,11 +21,13 @@
       height="460"
       style="width: 100%"
       :row-key="getRowKeys"
+      @selection-change="selectionChange"
     >
       <template
         v-for="item in tableColumns"
         :key="item"
       >
+        <!-- selection || index -->
         <el-table-column
           v-if="item.type == 'selection' || item.type == 'index'"
           v-bind="item"
@@ -106,7 +108,7 @@ const { tableData, pageable, searchParam, searchInitParam, getTableList, handleS
 // 接收 columns 并设置为响应式
 const tableColumns = ref<ColumnProps[]>(props.columns);
 const tiaoshi = () =>{
-  console.log(getTableList);
+  console.log(selectedListIds);
 }
 
 

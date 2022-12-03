@@ -9,13 +9,21 @@
       :data-callback="dataCallback"
     >
       <!-- 表格 header 按钮 -->
-      <template #tableHeader>
+      <template #tableHeader="tableHeader">
         <el-button
           type="primary"
           :icon="CirclePlus"
           @click="openDrawer('新增')"
         >
           新增用户
+        </el-button>
+        <el-button
+          type="danger"
+          :icon="Delete"
+          plain 
+          @click="batchDelete(tableHeader.selectList)"
+        >
+          批量删除用户
         </el-button>
       </template>
       <!-- 表格操作 -->
@@ -56,7 +64,7 @@ import {User} from '../../../api/interface/index'
 import ProTable from '../../../components/ProTable/Table.vue';
 import { ColumnProps } from '../../../components/ProTable/interface';
 import { getUserList, addUser, editUser , deleteUser} from '../../../api/userApi';
-import { CirclePlus, ZoomIn, Edit } from "@element-plus/icons-vue";
+import { CirclePlus, Delete, ZoomIn, Edit } from "@element-plus/icons-vue";
 import UserDrawer from "../../../components/ProTable/components/UserDrawer.vue";
 import { useHandleData } from "../../../hooks/useHandleData";
 
@@ -105,10 +113,17 @@ const openDrawer = (title: string, rowData: Partial<User.ResUserList> = { avatar
 	drawerRef.value.acceptParams(params);
 };
 
+// 
 const deleteAccount = async(params: User.ResUserList) =>{
-  console.log(params);
-  await useHandleData(deleteUser, params, "删除所选用户"); 
+  await useHandleData(deleteUser, params, `删除【${params.username}】用户`); 
   proTable.value.getTableList();
+}
+
+const batchDelete = async (params: User.ResUserList[]) =>{
+  console.log(params);
+  await useHandleData(deleteUser, params, "删除所选用户信息");
+  // proTable.value.clearSelection();
+	// proTable.value.getTableList();
 }
 </script>
 

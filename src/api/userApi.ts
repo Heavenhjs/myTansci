@@ -24,7 +24,7 @@ export const editUser = (params: { id: string }) => {
 };
 
 // 删除用户
-export const deleteUser = (params: {id: string}) =>{
+export const deleteUser = (params: any) =>{
     console.log("发送删除用户请求");
     console.log(params);
     return axios.post(PORT1 + '/user/sys/delete', params);
