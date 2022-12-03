@@ -4,18 +4,65 @@
       ref="proTable"
       title="用户列表"
       :columns="columns"
-      :requestApi="getUserList"
-      :initParam="initParam"
-      :dataCallback="dataCallback">
+      :request-api="getUserList"
+      :init-param="initParam"
+      :data-callback="dataCallback"
+    >
+      <!-- 表格 header 按钮 -->
+      <template #tableHeader>
+        <el-button
+          type="primary"
+          :icon="CirclePlus"
+          @click="openDrawer('新增')"
+        >
+          新增用户
+        </el-button>
+      </template>
+      <!-- 表格操作 -->
+      <template #operation="operation">
+        <el-button
+          :icon="ZoomIn"
+          type="success"
+          text
+          @click="openDrawer('查看',operation.row)"
+        >
+          查看
+        </el-button>
+        <el-button
+          :icon="Edit"
+          type="primary"
+          text
+          @click="openDrawer('编辑',operation.row)"
+        >
+          编辑
+        </el-button>
+        <el-button
+          :icon="Edit"
+          type="danger"
+          text
+          @click="deleteAccount(operation.row)"
+        >
+          删除
+        </el-button>
+      </template>
     </ProTable>
+    <UserDrawer ref="drawerRef" />
   </el-card>
 </template>
   
 <script lang="ts" setup>
-import { reactive } from "vue";
+import { reactive, ref} from "vue";
+import {User} from '../../../api/interface/index'
 import ProTable from '../../../components/ProTable/Table.vue';
 import { ColumnProps } from '../../../components/ProTable/interface';
-import { getUserList } from '../../../api/userApi';
+import { getUserList, addUser, editUser , deleteUser} from '../../../api/userApi';
+import { CirclePlus, ZoomIn, Edit } from "@element-plus/icons-vue";
+import UserDrawer from "../../../components/ProTable/components/UserDrawer.vue";
+import { useHandleData } from "../../../hooks/useHandleData";
+
+// 获取 ProTable 元素，调用其获取刷新数据方法（还能获取到当前查询参数，方便导出携带参数）
+const proTable = ref();
+
 // 扩展于Table-column
 const columns: ColumnProps[] = [
   {type:"selection", fixed:"left", width:80},
@@ -44,6 +91,25 @@ const dataCallback = (data: any) => {
 	};
 };
 
+// 打开 drawer(新增、查看、编辑)
+const drawerRef = ref();
+const openDrawer = (title: string, rowData: Partial<User.ResUserList> = { avatar: "" }) => {
+  // console.log(rowData)
+  let params = {
+		title,
+		rowData: { ...rowData },
+		isView: title === "查看",
+		api: title === "新增" ? addUser : title === "编辑" ? editUser : "",
+		getTableList: proTable.value.getTableList
+	};
+	drawerRef.value.acceptParams(params);
+};
+
+const deleteAccount = async(params: User.ResUserList) =>{
+  console.log(params);
+  await useHandleData(deleteUser, params, "删除所选用户"); 
+  proTable.value.getTableList();
+}
 </script>
 
 <style lang="less" scoped>

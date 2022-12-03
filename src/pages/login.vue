@@ -77,7 +77,7 @@
 import type { FormInstance, FormRules } from "element-plus";
 import { ElMessage } from "element-plus";
 import { ref, reactive } from "vue";
-import { useUserStore } from "../store/user";
+import  {useUserStore}  from "../store/user";
 import { login } from "../api/systemApi";
 import { useRouter } from "vue-router";
 

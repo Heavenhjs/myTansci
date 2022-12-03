@@ -52,7 +52,8 @@
         </div>
       </el-header>
       <!-- 主页面 -->
-      <el-main :style="{height: '800px'}">
+      <!-- 100vh表示百分百视距高度 -->
+      <el-main :style="{height: '100vh'}">
         <router-view
           v-show="state.iframe.isIframe"
           style="margin: 0.4rem;"
